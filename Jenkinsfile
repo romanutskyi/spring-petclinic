@@ -23,12 +23,12 @@ pipeline {
         }
         stage('Build Docker Image') {
             when {
-                branch 'master'
+                branch 'main'
             }
             steps {
                 echo '=== Building Petclinic Docker Image ==='
                 script {
-                    app = docker.build("ibuchh/petclinic-spinnaker-jenkins")
+                    app = docker.build("romanutskyi/petclinic-from-jenkins")
                 }
             }
         }
