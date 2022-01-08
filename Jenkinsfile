@@ -4,13 +4,13 @@ pipeline {
         pollSCM "* * * * *"
        }
     stages {
-        stage('Build Application') { 
+        stage('BUILD') { 
             steps {
                 echo '=== Building Petclinic Application ==='
                 sh 'mvn -B -DskipTests clean package' 
             }
         }
-        stage('Test Application') {
+        stage('TEST') {
             steps {
                 echo '=== Testing Petclinic Application ==='
                 sh 'mvn test'
@@ -21,7 +21,7 @@ pipeline {
                 }
             }
         }
-        stage('Build Docker Image') {
+        stage('CREATE ARTIFACT') {
             when {
                 branch 'main'
             }
@@ -32,7 +32,7 @@ pipeline {
                 }
             }
         }
-        stage('Push Docker image to DockerHub and remove local images') {
+        stage('PUSH') {
             steps {
                 script {
                     docker.withRegistry('https://registry.hub.docker.com', '${DOCKER_CREDS}') {
