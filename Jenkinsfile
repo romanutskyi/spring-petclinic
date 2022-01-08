@@ -1,11 +1,10 @@
 pipeline {
     agent any
     stages {
-        stage('BUILD') { 
+        stage('Build Application') { 
             steps {
                 echo '=== Building Petclinic Application ==='
                 sh 'mvn -B -DskipTests clean package' 
-    }
             }
         }
         stage('TEST') {
