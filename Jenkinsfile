@@ -4,7 +4,7 @@ pipeline {
         stage('Build Application') { 
             steps {
                 echo '=== Building Petclinic Application ==='
-                    ./mvnw package
+                    ./mvnw clean package
             }
         }
         stage('TEST') {
