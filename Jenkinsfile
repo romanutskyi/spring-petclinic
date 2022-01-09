@@ -4,7 +4,7 @@ pipeline {
         stage('Build Application') { 
             steps {
                 echo '=== Building Petclinic Application ==='
-                git clone https://github.com/romanutskyi/spring-petclinic.git
+                git https://github.com/romanutskyi/spring-petclinic.git
                     cd spring-petclinic
                     ./mvnw package
                     java -jar target/*.jar
