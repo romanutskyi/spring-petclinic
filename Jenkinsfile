@@ -15,9 +15,6 @@ pipeline {
             }
         }
         stage('CREATE ARTIFACT') {
-            when {
-                branch 'main'
-            }
             steps {
                 echo '=== Building Petclinic Docker Image ==='
                 script {
