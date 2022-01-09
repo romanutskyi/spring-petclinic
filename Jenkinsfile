@@ -1,21 +1,21 @@
 pipeline {
     agent any
     stages {
-        stage('Build Application') { 
+        stage('BUILD') { 
             steps {
                 echo '=== Building Petclinic Application ==='
                 sh './mvnw package' 
             }
         }
-        stage('Build Docker Image') {
+        stage('CREATE ARTIFACT') {
             steps {
                 echo '=== Building Petclinic Docker Image ==='
                 script {
-                    app = docker.build("romanutskyi/petclinic-spinnaker-jenkins")
+                    app = docker.build("romanutskyi/petclinic-EFT")
                 }
             }
         }
-        stage('Push Docker Image') {
+        stage('PUBLISH ARTIFACT') {
             steps {
                 echo '=== Pushing Petclinic Docker Image ==='
                 script {
@@ -28,12 +28,13 @@ pipeline {
                 }
             }
         }
-        stage('Remove local images') {
+        stage('REMOVE LOCAL IMAGES') {
             steps {
                 echo '=== Delete the local docker images ==='
                 sh("docker rmi -f romanutskyi/petclinic-spinnaker-jenkins:latest || :")
                 sh("docker rmi -f romanutskyi/petclinic-spinnaker-jenkins:$SHORT_COMMIT || :")
             }
         }
+        
     }
 }
