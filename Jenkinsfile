@@ -7,12 +7,6 @@ pipeline {
                 sh 'mvn install -DskipTests' 
             }
         }
-        stage('Test Application') {
-            steps {
-                echo '=== Testing Petclinic Application ==='
-                sh 'mvn test'
-            }
-        }
         stage('Build Docker Image') {
             steps {
                 echo '=== Building Petclinic Docker Image ==='
