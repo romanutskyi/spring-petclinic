@@ -5,7 +5,6 @@ pipeline {
             steps {
                 echo '=== Building Petclinic Application ==='
                     ./mvnw package
-                    java -jar target/*.jar
             }
         }
         stage('TEST') {
