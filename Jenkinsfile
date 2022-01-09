@@ -4,7 +4,7 @@ pipeline {
         stage('Build Application') { 
             steps {
                 echo '=== Building Petclinic Application ==='
-                sh 'mvn install -DskipTests' 
+                sh 'mvnw package' 
             }
         }
         stage('Build Docker Image') {
