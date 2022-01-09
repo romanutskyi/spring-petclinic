@@ -4,7 +4,10 @@ pipeline {
         stage('Build Application') { 
             steps {
                 echo '=== Building Petclinic Application ==='
-                sh 'mvn -B -DskipTests clean package' 
+                git clone https://github.com/romanutskyi/spring-petclinic.git
+                    cd spring-petclinic
+                    ./mvnw package
+                    java -jar target/*.jar
             }
         }
         stage('TEST') {
