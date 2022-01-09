@@ -4,8 +4,7 @@ pipeline {
         stage('Build Application') { 
             steps {
                 echo '=== Building Petclinic Application ==='
-                chmod +x mvnw
-                  sh 'mvnw clean package'
+                  sh 'mvn clean package'
 
             }
         }
