@@ -1,10 +1,10 @@
 pipeline {
     agent any
     stages {
-        stage('BUILD') { 
+        stage('BUILD') {
             steps {
                 echo '=== Building Petclinic Application ==='
-                sh './mvnw package' 
+                sh './mvnw package'
             }
         }
         stage('CREATE ARTIFACT') {
@@ -19,11 +19,8 @@ pipeline {
             steps {
                 echo '=== Pushing Petclinic Docker Image ==='
                 script {
-  #                  GIT_COMMIT_HASH = sh (script: "git log -n 1 --pretty=format:'%H'", returnStdout: true)
- #                   SHORT_COMMIT = "${GIT_COMMIT_HASH[0..7]}"
                     docker.withRegistry('https://registry.hub.docker.com', '${DOCKER_CREDS}') {
                         app.push("$BUILD_NUMBER")
-#                        app.push("$SHORT_COMMIT")
                         app.push("latest")
                     }
                 }
@@ -36,6 +33,6 @@ pipeline {
                 sh("docker rmi -f romanutskyi/petclinic-spinnaker-jenkins:$SHORT_COMMIT || :")
             }
         }
-        
+
     }
 }
