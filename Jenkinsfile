@@ -30,7 +30,7 @@ pipeline {
             steps {
                 echo '=== Delete the local docker images ==='
                 sh("docker rmi -f romanutskyi/petclinic-spinnaker-jenkins:latest || :")
-                sh("docker rmi -f romanutskyi/petclinic-spinnaker-jenkins:$SHORT_COMMIT || :")
+                sh("docker rmi -f romanutskyi/petclinic-spinnaker-jenkins:$BUILD_NUMBER || :")
             }
         }
 
