@@ -4,7 +4,7 @@ pipeline {
         stage('BUILD') {
             steps {
                 echo '=== Building Petclinic Application ==='
-                sh './mvnw -B -DskipTests package'
+                sh './mvnw -B -Dskiptests clean package'
             }
         }
         stage('CREATE ARTIFACT') {
