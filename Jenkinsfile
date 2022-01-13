@@ -4,7 +4,6 @@ pipeline {
         stage('BUILD') {
             steps {
                 echo '=== Building Petclinic Application ==='
-                sh 'mvn -Dcheckstyle.skip=true'
                 sh './mvnw package'
             }
         }
