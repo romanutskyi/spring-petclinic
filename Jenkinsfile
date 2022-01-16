@@ -37,8 +37,8 @@ pipeline {
             steps {
                withCredentials([[$class: 'StringBinding', vaultCredentialsId: 'vault_token', variable: 'ANSIBLE_VAULT']]) {
                    ansiblePlaybook{
-                            playbook: "/ansible/petclinic_playbook.yml",
-                            inventory: "/ansible/hosts.txt",
+                            playbook: "ansible/petclinic_playbook.yml",
+                            inventory: "ansible/hosts.txt",
                             credentialsId: "$ANSIBLE_VAULT"
                 }
                 
