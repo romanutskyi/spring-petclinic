@@ -1,2 +1,2 @@
 [application_servers]
-app-srv ansible_host=ec2-3-91-132-121.compute-1.amazonaws.com
+app-srv ansible_host=ubuntu@3.91.132.121
