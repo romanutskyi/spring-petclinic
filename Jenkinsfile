@@ -35,10 +35,12 @@ pipeline {
         }
         stage('CI DEPLOY') {
             steps {
-                sh ansible-playbook --ask-vault-pass ${ANSIBLE_VAULT} ansible/petclinic_playbook.yml
+               ansiblePlaybook(
+                    vaultCredentialsId: 'AnsibleVault', 
+                    inventory: 'ansible/hosts.txt', 
+                    playbook: 'ansible/petclinic_playbook.yml'
+                )
             }
-
         }
-
     }
 }
