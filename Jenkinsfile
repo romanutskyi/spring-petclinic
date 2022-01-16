@@ -38,7 +38,8 @@ pipeline {
                ansiblePlaybook(
                     vaultCredentialsId: 'AnsibleVault', 
                     inventory: 'ansible/hosts.txt', 
-                    playbook: 'ansible/petclinic_playbook.yml'
+                    playbook: 'ansible/petclinic_playbook.yml',
+                    disableHostKeyChecking: true,
                 )
             }
         }
