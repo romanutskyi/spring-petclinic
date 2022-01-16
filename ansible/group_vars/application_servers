@@ -1,4 +1,4 @@
 ---
 ansible_user                 : ubuntu
-ansible_ssh_private_key_file : ~/.ssh/APP-srever.pem
+ansible_ssh_private_key_file : /home/ubuntu/.ssh/APP-srever.pem
 ansible_python_interpreter   : /usr/bin/python3
