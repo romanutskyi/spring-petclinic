@@ -38,6 +38,7 @@ pipeline {
                ansiblePlaybook(
                     vaultCredentialsId: 'AnsibleVault',
                     playbook: 'ansible/petclinic_playbook.yml'
+                    inventory: 'ansible/hosts.txt'
                 )
             }
         }
