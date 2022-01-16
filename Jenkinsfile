@@ -36,9 +36,9 @@ pipeline {
         stage('CI DEPLOY') {
             steps {
                ansiblePlaybook(
-                    vaultCredentialsId: 'AnsibleVault',
+                    vaultCredentialsId: 'AnsibleVault', 
+                    inventory: 'ansible/hosts.txt', 
                     playbook: 'ansible/petclinic_playbook.yml'
-                    inventory: 'ansible/hosts.txt'
                 )
             }
         }
