@@ -36,10 +36,10 @@ pipeline {
         stage('CI DEPLOY') {
             steps {
                ansiblePlaybook(
-                    vaultCredentialsId: 'AnsibleVault', 
-                    inventory: 'ansible/hosts.txt', 
+                    vaultCredentialsId: 'AnsibleVault',
+                    inventory: 'ansible/hosts.txt',
                     playbook: 'ansible/petclinic_playbook.yml',
-                    disableHostKeyChecking: true,
+                    disableHostKeyChecking: true
                 )
             }
         }
