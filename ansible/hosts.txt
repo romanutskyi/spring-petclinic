@@ -1,2 +1,2 @@
 [application_servers]
-app-srv ansible_host=54.208.41.54
+app-srv ansible_host=3.86.31.129
