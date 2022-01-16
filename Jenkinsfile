@@ -33,6 +33,12 @@ pipeline {
                 sh("docker rmi -f romanutskyi/petclinic-spinnaker-jenkins:$BUILD_NUMBER || :")
             }
         }
+        stage('CI DEPLOY') {
+            steps {
+                sh ansible-playbook --ask-vault-pass ${ANSIBLE_VAULT} ansible/petclinic_playbook.yml
+            }
+
+        }
 
     }
 }
