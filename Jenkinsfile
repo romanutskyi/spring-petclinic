@@ -37,11 +37,6 @@ pipeline {
             steps {
              sh 'ansible-playbook --ask-vault-pass ansible/petclinic_playbook.yml'
                 }
-                
-                
-            }
-
         }
-
     }
 }
