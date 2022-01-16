@@ -35,8 +35,7 @@ pipeline {
         }
         stage('CI DEPLOY') {
             steps {
-                sh 'ansible-playbook --ask-vault-pass ansible/petclinic_playbook.yml'
-                sh '${ANSIBLE_VAULT}'
+                echo "${ANSIBLE_VAULT}" | ansible-playbook some_example_playbook --ask-vault-pass
             }
 
         }
