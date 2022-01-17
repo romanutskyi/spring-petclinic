@@ -43,5 +43,10 @@ pipeline {
                 )
             }
         }
+        stage ('DAST') {
+          steps {
+              sh ("docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable zap-baseline.py -t http://54.159.130.13 -g gen.conf -r testreport.html --hook=/zap/wrk/my-hooks.py")
+          }
+        }
     }
 }
