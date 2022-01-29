@@ -29,8 +29,7 @@ pipeline {
         stage('REMOVE LOCAL IMAGES') {
             steps {
                 echo '=== Delete the local docker images ==='
-                sh("docker rmi -f romanutskyi/petclinic-spinnaker-jenkins:latest || :")
-                sh("docker rmi -f romanutskyi/petclinic-spinnaker-jenkins:$BUILD_NUMBER || :")
+                sh("docker system prune")
             }
         }
         stage('CI DEPLOY') {
@@ -45,7 +44,7 @@ pipeline {
         }
         stage ('DAST') {
           steps {
-              sh ("docker run -v /home/ubuntu/:/zap/wrk/:rw -t owasp/zap2docker-stable zap-baseline.py -t http://54.159.130.13 -g gen.conf -r testreport.html --hook=/zap/wrk/my-hooks.py ")
+              sh ("docker run -v /home/ubuntu/:/zap/wrk/:rw -t owasp/zap2docker-stable zap-baseline.py -t http://3.84.40.225 -g gen.conf -r testreport.html --hook=/zap/wrk/my-hooks.py ")
           }
         }
     }
