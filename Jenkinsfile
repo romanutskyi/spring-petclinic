@@ -32,20 +32,20 @@ pipeline {
                 sh("docker system prune")
             }
         }
-        stage('CI DEPLOY') {
-            steps {
-               ansiblePlaybook(
-                    vaultCredentialsId: 'AnsibleVault',
-                    inventory: 'ansible/hosts.txt',
-                    playbook: 'ansible/petclinic_playbook.yml',
-                    disableHostKeyChecking: true
-                )
-            }
-        }
-        stage ('DAST') {
-          steps {
-              sh ("docker run -v /home/ubuntu/:/zap/wrk/:rw -t owasp/zap2docker-stable zap-baseline.py -t http://3.84.40.225 -g gen.conf -r testreport.html --hook=/zap/wrk/my-hooks.py ")
-          }
-        }
+   #     stage('CI DEPLOY') {
+   #         steps {
+   #            ansiblePlaybook(
+   #                 vaultCredentialsId: 'AnsibleVault',
+   #                 inventory: 'ansible/hosts.txt',
+   #                 playbook: 'ansible/petclinic_playbook.yml',
+   #                 disableHostKeyChecking: true
+   #             )
+   #         }
+   #     }
+   #     stage ('DAST') {
+   #       steps {
+   #           sh ("docker run -v /home/ubuntu/:/zap/wrk/:rw -t owasp/zap2docker-stable zap-baseline.py -t http://3.84.40.225 -g gen.conf -r testreport.html --hook=/zap/wrk/my-hooks.py ")
+   #       }
+   #     }
     }
 }
